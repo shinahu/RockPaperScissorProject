@@ -25,10 +25,6 @@ export class RockService {
 
 
   });
-
-  
-
-  
 }
 
 userScore = 0;
