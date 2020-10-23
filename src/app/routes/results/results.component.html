@@ -1,17 +1,21 @@
+
+
 <div class="score-board">
-    <div class="badge" id="user-label">Player: {{rockService.userSelected}}</div>
-    <div class="badge" id="comp-label">Comp: {{rockService.compSelected}}</div>
-    <span id="user-score">{{rockService.userScore}}</span>:<span id="comp-score">{{rockService.compScore}}</span>
+    <div class="badge" id="user-label">Player: {{rockService.userSelection}}</div>
+    <div class="badge" id="comp-label">Comp: {{rockService.compSelection}}</div>
+    <!-- <span id="user-score">{{rockService.userScore}}</span>:<span id="comp-score">{{rockService.compScore}}</span> -->
 </div>
 
 <div class="result">
-    <p *ngIf="rockService.status">{{rockService.userSelected}} {{rockService.action}} {{rockService.compSelected}}{{rockService.status}} </p>
+    <p *ngIf="rockService.Result">{{rockService.userSelection}} {{rockService.userSelection}} {{rockService.compSelection}}{{rockService.Resultng}} </p>
   
   
 
-  <h1>{{rockService.selection}}</h1>
+  <h1>{{rockService.userSelection}}</h1>
 
   
 
 
-<button class="PlayAgain" routerLink="choice"><h1 class="menu_links" >Play Again...</h1></button>
+<button class="PlayAgain" routerLink="choice"><h1 class="menu_links"> Play Again.. </h1><button>
+
+
