@@ -22,7 +22,7 @@ export class RockService {
   get compSelection() {
     return this._compSelection;
   }
-  get Result() {
+  get gameResult() {
       return this._gameResult;
   }
     // userScore = 0;
@@ -38,18 +38,23 @@ export class RockService {
 
   //userPick function which is executed whenever a 'weapon' is clicked
   commitSelection(userWeapon: string){
-  console.log( this.userSelection);
-  this.router.navigateByUrl("/results");
+   
   let request = this.httpClient.post<Results>("http://localhost:5000/game", {
       playerChoice: userWeapon,
     } as PlayerChoice);
     request.subscribe((response) => {
+      console.log(this.userSelection);
       console.log(response);
       this._userSelection = response.playerChoice;
       this._compSelection = response.cpuChoice;
       this._gameResult = response.gameResult;
+      this.router.navigateByUrl("/results");
       
+    
+
     });
+  }
+}
 
 
   // setTimeout( () => {
@@ -59,7 +64,7 @@ export class RockService {
   //   this.checkResult();
   // }, 1000);
 
-}
+
 
   // commitSelection(userPick) {
   //   of(null).pipe(delay(1000)).subscribe(() => {
@@ -70,7 +75,7 @@ export class RockService {
 
 
   // });
-}
+
 
 
 // compWeapons = [

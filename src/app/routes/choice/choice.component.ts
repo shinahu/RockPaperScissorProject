@@ -18,9 +18,9 @@ export class ChoiceComponent implements OnInit {
   action: string;
   status: string;
   compWeapons = [
-    'rock',
-    'paper',
-    'scissors'
+    'Rock',
+    'Paper',
+    'Scissors'
   ];
 
   
@@ -28,7 +28,7 @@ export class ChoiceComponent implements OnInit {
     
   }
 
-  userPick(userWeapo: 'rock' | 'paper'| 'scissors' ){
+  userPick(userWeapo: 'Rock' | 'Paper'| 'Scissors' ){
     this.rockService.commitSelection(userWeapo);
   }
 
