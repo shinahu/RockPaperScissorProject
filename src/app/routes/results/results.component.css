@@ -63,10 +63,12 @@
   }
   
   .PlayAgain{
+    border-block-end-style: groove;
+    display: inline inline-block;
     background-color: aqua;
-    font-family: sans-serif;
+    font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;;
     text-align: center;
-    color: rgb(252, 55, 153);
+    color: rgb(228, 25, 126);
     font-weight: bold;
     font-size: 15px;
     padding: 10px;

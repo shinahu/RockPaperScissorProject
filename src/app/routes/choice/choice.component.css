@@ -44,14 +44,14 @@
   
   .choice{
     display: inline-block;
-    border: 40px solid white;
-    border-radius: 20%;
+    border: 30px solid white;
+    border-radius: 5%;
     margin: 0 30px;
   }
   
   .choice:hover{
     cursor: pointer;
-    background: rgb(12, 12, 235);
+    background: rgb(90, 255, 214);
   }
   
   #action-message{
