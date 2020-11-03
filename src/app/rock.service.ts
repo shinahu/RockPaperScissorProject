@@ -4,17 +4,22 @@ import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { Results, PlayerChoice } from './models/game';
 import { HttpClient } from '@angular/common/http';
+import { ScoreboardComponent } from './routes/Scoreboard/scoreboard/scoreboard.component';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class RockService {
+export  class RockService {
 
   private _userSelection?: string;
   private _compSelection: string;
   private _gameResult: string;
+  public userName: string;
+  
+ // private _scorePlayer: string;
+
 
   get userSelection() {
     return this._userSelection;
@@ -25,6 +30,18 @@ export class RockService {
   get gameResult() {
       return this._gameResult;
   }
+  
+
+  
+
+ //get userName() {
+  //return this.userName;
+
+   // }
+
+//  get scorePlayer() {
+ //     return this._scorePlayer;
+ // }
     // userScore = 0;
     // compScore = 0;
     // userSelected: string; // Which weapon user selected
@@ -37,22 +54,24 @@ export class RockService {
   
 
   //userPick function which is executed whenever a 'weapon' is clicked
-  commitSelection(userWeapon: string){
+  commitSelection(userWeapon: string, userName: string){
+    userName = this.userName
    
   let request = this.httpClient.post<Results>("http://localhost:5000/game", {
-      playerChoice: userWeapon,
+      playerChoice: userWeapon, userName:userName
     } as PlayerChoice);
+    console.log(userWeapon,userName);
     request.subscribe((response) => {
-      console.log(this.userSelection);
       console.log(response);
       this._userSelection = response.playerChoice;
       this._compSelection = response.cpuChoice;
       this._gameResult = response.gameResult;
-      this.router.navigateByUrl("/results");
-      
-    
-
+      this.userName = response.userName;
+      console.log(response)
+      this.router.navigateByUrl("/results"); 
+            
     });
+      
   }
 }
 

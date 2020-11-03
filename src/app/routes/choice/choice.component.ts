@@ -13,6 +13,7 @@ export class ChoiceComponent implements OnInit {
 
   userScore = 0;
   compScore = 0;
+  userName: string;
   userSelected: string;
   compSelected: string;
   action: string;
@@ -24,12 +25,13 @@ export class ChoiceComponent implements OnInit {
   ];
 
   
-  ngOnInit(): void {
+  ngOnInit(): void { 
     
   }
 
-  userPick(userWeapo: 'Rock' | 'Paper'| 'Scissors' ){
-    this.rockService.commitSelection(userWeapo);
+  userPick(userWeapo: 'Rock' | 'Paper'| 'Scissors'){
+    let userName = this.rockService.userName;
+    this.rockService.commitSelection(userWeapo, userName);
   }
 
   }
