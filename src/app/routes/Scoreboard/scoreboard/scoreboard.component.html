@@ -1,4 +1,20 @@
-<p>scoreboard works!</p>
+<div class="score-board">
+    <div>
+        <h1>HIGH SCORE!</h1>
+    </div>
+
+    <div *ngFor="let lb of scoreboard.Leaderboard">
+
+        <div id="highscore-message">
+            <div>{{lb.username}}</div>
+            <div>{{lb.winRatio}}</div>
+            <div>{{lb.turnPlayed}}</div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 
@@ -7,6 +23,11 @@
 
 
 
-<button class="PlayAgain" routerLink="choice"><h1 class="menu_links"> Play Again..</h1> </button>
 
 
+
+<div id="action-message">
+    <button class="PlayAgain" routerLink="choice">
+        <h1 class="menu_links"> Play Again..</h1>
+    </button>
+</div>

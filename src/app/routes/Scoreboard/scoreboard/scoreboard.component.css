@@ -1,3 +1,29 @@
+
+.score-board{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 100px;
+  margin: 20px auto;
+  border: 2px solid white;
+  color: rgb(248, 133, 2);
+  height: 700px;
+  width: 700px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 46px;
+  padding: 15px 20px;
+  position: relative;
+} 
+  
+
+#highscore-message{
+  text-align: center;
+  color: rgb(241, 150, 13);
+  font-weight: bold;
+  font-size: 30px;
+  margin: 50px 0;
+}
+
+
 #action-message{
     text-align: center;
     color: rgb(42, 255, 191);
@@ -8,7 +34,8 @@
 
 .PlayAgain{
     border-block-end-style: groove;
-    display: inline inline-block;
+    position: center;
+    
     background-color: aqua;
     font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;;
     text-align: center;
@@ -16,10 +43,16 @@
     font-weight: bold;
     font-size: 15px;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 0px;
     
   }
 
   .menu_links {
     cursor: pointer;
+}
+
+.boxplaygain {
+
+  position: center;
+
 }
