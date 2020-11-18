@@ -9,3 +9,9 @@ export interface Results {
     gameResult: string;
     userName: string;
 }
+
+export interface RoundChoice {
+    roundChoice: string;
+    userName: string;
+
+}

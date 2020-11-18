@@ -1,0 +1,20 @@
+
+<app-username></app-username>
+<div class="result">
+    <p *ngIf="status">{{userSelected}} {{action}} {{compSelected}}{{status}} </p>
+  </div>
+  
+  <div class="choices">
+    <div class="choice" id="rock">
+      <img src="../assets/onee.JPG" (click)='roundsPick("One")'>
+    </div>
+    <div class="choice" id="paper">
+      <img src="../assets/threee.JPG" (click)='roundsPick("Three")'>
+    </div>
+    <div class="choice" id="scissor">
+      <img src="../assets/fivee.JPG" (click)='roundsPick("Five")'>
+    </div>
+  </div>
+  
+  <p id="action-message">Pick Number of Rounds to Play </p>
+  <p id="action-message" *ngIf="status">Wait...</p>

@@ -9,6 +9,7 @@ import { ChoiceComponent } from './routes/choice/choice.component';
 import { ResultsComponent } from './routes/results/results.component';
 import { ScoreboardComponent } from './routes/Scoreboard/scoreboard/scoreboard.component';
 import { UsernameComponent } from './username/username.component';
+import { RoundsComponent } from './routes/rounds/rounds.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UsernameComponent } from './username/username.component';
     ChoiceComponent,
     ResultsComponent,
     ScoreboardComponent,
-    UsernameComponent
+    UsernameComponent,
+    RoundsComponent,
   ],
   imports: [
     BrowserModule,

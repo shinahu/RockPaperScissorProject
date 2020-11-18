@@ -1,19 +1,35 @@
+
 <div class="score-board">
-    <div>
-        <h1>HIGH SCORE!</h1>
-    </div>
+ 
+        <h1>LEADER BOARD!</h1>
 
-    <div *ngFor="let lb of scoreboard.Leaderboard">
+        <div class="headings"> 
 
-        <div id="highscore-message">
-            <div>{{lb.username}}</div>
-            <div>{{lb.winRatio}}</div>
-            <div>{{lb.turnPlayed}}</div>
+            <div *ngFor="let lb of scoreboard.Leaderboard">
+            <table>
+                <div><h1>User Name</h1></div>
+                <td class="headings">{{lb.username}}</td>
+                <div><h2>Win Ratio</h2> </div>
+                <td class="headings">{{lb.winRatio}}</td>
+                <div> <h3>Turns Played</h3></div>
+                <td class="headings">{{lb.turnPlayed}}</td>
 
+
+            </table>
+               -->
+
+         
         </div>
 
-    </div>
+            <div id="highscore-message"> 
+    
+            </div>
+    
+        </div>
+    
+  
 
+   
 </div>
 
 

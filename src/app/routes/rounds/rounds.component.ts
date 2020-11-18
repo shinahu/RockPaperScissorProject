@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-choice',
-  templateUrl: './choice.component.html',
-  styleUrls: ['./choice.component.css']
+  templateUrl: './rounds.component.html',
+  styleUrls: ['./rounds.component.css']
 })
-export class ChoiceComponent implements OnInit {
+export class RoundsComponent implements OnInit {
 
   constructor(private rockService: RockService) { }
 
@@ -30,9 +30,9 @@ export class ChoiceComponent implements OnInit {
     
   }
 
-  userPick(userWeapo: 'Rock' | 'Paper'| 'Scissors'){
+  roundsPick(userRound: 'One' | 'Three'| 'Five'){
     let userName = this.rockService.userName;
-    this.rockService.commitSelection(userWeapo, userName);
+    this.rockService.commitRoundSelection(userRound, userName);
   }
 
   }

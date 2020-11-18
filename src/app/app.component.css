@@ -4,3 +4,10 @@ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans
 color: rgb(44, 226, 19);
 padding: 20px;
 }
+
+.ScoreReport{
+ font-size: 40px;
+ color: chocolate;
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}

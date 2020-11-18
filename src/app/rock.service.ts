@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { Results, PlayerChoice } from './models/game';
+import { Results, PlayerChoice, RoundChoice } from './models/game';
 import { HttpClient } from '@angular/common/http';
 import { ScoreboardComponent } from './routes/Scoreboard/scoreboard/scoreboard.component';
+import { ChoiceComponent } from './routes/choice/choice.component';
 
 
 
@@ -17,6 +18,7 @@ export  class RockService {
   private _compSelection: string;
   private _gameResult: string;
   public userName: string;
+  private _roundSelection?: string;
   
  // private _scorePlayer: string;
 
@@ -31,6 +33,9 @@ export  class RockService {
       return this._gameResult;
   }
   
+  get roundSelection() {
+    return this._roundSelection;
+  }
 
   
 
@@ -71,6 +76,23 @@ export  class RockService {
       this.router.navigateByUrl("/results"); 
             
     });
+
+  }
+    commitRoundSelection(userRound: string, userName: string){
+      userName = this.userName
+     
+    let request = this.httpClient.post<RoundChoice>("http://localhost:5000/game", {
+       roundChoice: userRound, userName:userName
+      } as RoundChoice);
+      console.log(userRound,userName);
+      request.subscribe((response) => {
+        console.log(response);
+        this._roundSelection = response.roundChoice;
+        this.userName = response.userName;
+        console.log(response)
+        this.router.navigateByUrl("/choice");
+              
+      });
       
   }
 }
