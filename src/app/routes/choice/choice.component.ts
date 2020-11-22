@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class ChoiceComponent implements OnInit {
 
-  constructor(private rockService: RockService) { }
+  roundCounter = 1;
+  maxRounds: number;
+
+  constructor(public rockService: RockService, public router: Router) { }
 
   userScore = 0;
   compScore = 0;
@@ -27,12 +30,23 @@ export class ChoiceComponent implements OnInit {
 
   
   ngOnInit(): void { 
+    this.maxRounds = this.rockService.roundsSelect;
     
   }
 
   userPick(userWeapo: 'Rock' | 'Paper'| 'Scissors'){
-    let userName = this.rockService.userName;
-    this.rockService.commitSelection(userWeapo, userName);
+    /*let userName = this.rockService.userName;*/
+    if(this.roundCounter !=this.maxRounds){
+      this.rockService.adduserselectiontoArray(userWeapo,this.maxRounds,this.roundCounter)
+      this.roundCounter++;
+      console.log(this.maxRounds, this.roundCounter)
+    } 
+    else{
+      this.rockService.adduserselectiontoArray(userWeapo,this.maxRounds,this.roundCounter)
+      this.rockService.commitSelection(userWeapo);
+      this.router.navigateByUrl("/results");
+    }
+    //this.rockService.commitSelection(userWeapo, userName);
   }
 
   }

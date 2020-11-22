@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RoundsComponent implements OnInit {
 
-  constructor(private rockService: RockService) { }
+  constructor(public rockService: RockService, public router: Router) { }
 
   userScore = 0;
   compScore = 0;
@@ -27,12 +27,16 @@ export class RoundsComponent implements OnInit {
 
   
   ngOnInit(): void { 
+
+    this.rockService.userselectionArray = [];
+    this.rockService.gameresultArray = [];
     
   }
 
-  roundsPick(userRound: 'One' | 'Three'| 'Five'){
-    let userName = this.rockService.userName;
-    this.rockService.commitRoundSelection(userRound, userName);
+  roundsPick(userRound: 1 | 3 | 5 ){
+    /*let userName = this.rockService.userName;*/
+    this.rockService.roundsSelect = userRound;
+    this.router.navigateByUrl("/choice");
   }
 
   }

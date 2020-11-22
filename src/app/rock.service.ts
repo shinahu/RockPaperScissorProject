@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { Results, PlayerChoice, RoundChoice } from './models/game';
+import { GameResult, PlayerChoice, RoundsSelect } from './models/game';
 import { HttpClient } from '@angular/common/http';
 import { ScoreboardComponent } from './routes/Scoreboard/scoreboard/scoreboard.component';
 import { ChoiceComponent } from './routes/choice/choice.component';
@@ -15,10 +15,17 @@ import { ChoiceComponent } from './routes/choice/choice.component';
 export  class RockService {
 
   private _userSelection?: string;
-  private _compSelection: string;
-  private _gameResult: string;
+  private _compSelection?: string;
+  private _gameResult?: string;
   public userName: string;
   private _roundSelection?: string;
+  public roundsSelect:number;
+  public userselectionArray:PlayerChoice[] = [];
+  public gameresultArray: any = [];
+  private _selection?: string;
+  private _comChoice?: string;
+  private _result?: string;
+ 
   
  // private _scorePlayer: string;
 
@@ -36,51 +43,58 @@ export  class RockService {
   get roundSelection() {
     return this._roundSelection;
   }
+  get comChoice() {
+    return this._comChoice;
+  }
+  get result() {
+    return this._result;
+  }
 
-  
 
- //get userName() {
-  //return this.userName;
-
-   // }
-
-//  get scorePlayer() {
- //     return this._scorePlayer;
- // }
-    // userScore = 0;
-    // compScore = 0;
-    // userSelected: string; // Which weapon user selected
-    // compSelected: string; //which weapon computer selected
-    // action: string; //is known whether user weapon beats or loses to computer
-    // status: string; //know whether it's a win or lose
   
 
   constructor(private router: Router, private httpClient: HttpClient) { }
   
+  adduserselectiontoArray(userselected: string, maxrounds: number, roundcounter: number){
+    let Data = {
+    playerChoice: userselected,
+    userName: this.userName,
+    currentRound: roundcounter,
+    maxRounds: maxrounds
+    }
+    
+    this.userselectionArray.push(Data);
+    }
+
+
 
   //userPick function which is executed whenever a 'weapon' is clicked
-  commitSelection(userWeapon: string, userName: string){
-    userName = this.userName
-   
-  let request = this.httpClient.post<Results>("http://localhost:5000/game", {
-      playerChoice: userWeapon, userName:userName
-    } as PlayerChoice);
-    console.log(userWeapon,userName);
-    request.subscribe((response) => {
+  commitSelection(selectOption){  
+  let request = this.httpClient.post<GameResult>("http://localhost:5000/Game/rounds", this.userselectionArray); {
+    request.subscribe((response)=> {
       console.log(response);
-      this._userSelection = response.playerChoice;
-      this._compSelection = response.cpuChoice;
-      this._gameResult = response.gameResult;
-      this.userName = response.userName;
-      console.log(response)
-      this.router.navigateByUrl("/results"); 
+      this.gameresultArray = response;
+
+
+    
+      //playerChoice: userWeapon, userName:userName
+   // } //as PlayerChoice);
+   // console.log(userWeapon,userName);
+   // request.subscribe((response) => {
+    //  console.log(response);
+    //  this._userSelection = response.playerChoice;
+    //  this._compSelection = response.cpuChoice;
+    //  this._gameResult = response.gameResult;
+    //  this.userName = response.userName;
+    //  console.log(response)
+    //  this.router.navigateByUrl("/results"); 
             
     });
-
   }
-    commitRoundSelection(userRound: string, userName: string){
+  //}
+  /*  commitRoundSelection(userRound: string, userName: string){
       userName = this.userName
-     
+   //  
     let request = this.httpClient.post<RoundChoice>("http://localhost:5000/game", {
        roundChoice: userRound, userName:userName
       } as RoundChoice);
@@ -181,8 +195,6 @@ export  class RockService {
 //       break;
 //     default:
 //       this.draw(userChoice, compChoice);
-//       break;
-
-//   }
-// }
-
+//       break;*/
+  }
+}

@@ -3,13 +3,11 @@
 
 <app-username></app-username>
 
-<div class="result">
-    <p *ngIf="status">{{userSelected}} {{action}} {{compSelected}}{{status}} </p>
-  </div>
+
   
   <div class="choices">
     <div class="choice" id="rock">
-      <img src="../assets/Rocks.JPG" (click)='userPick("Rock")'>
+      <img src="../assets/Rock.JPG" (click)='userPick("Rock")'>
     </div>
     <div class="choice" id="paper">
       <img src="../assets/Paper.JPG" (click)='userPick("Paper")'>
@@ -19,5 +17,9 @@
     </div>
   </div>
   
-  <p id="action-message" *ngIf="!status">Please Make Your Move </p>
-  <p id="action-message" *ngIf="status">Wait...</p>
+  
+
+  <div class="result">
+    <p id="action-message">{{rockService.userName}} If You Dare, Please Make Your Move!</p> 
+    <p id="action-message">Round:{{roundCounter}}/{{maxRounds}}</p>
+  </div>
